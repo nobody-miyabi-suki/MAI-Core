@@ -62,22 +62,23 @@ This repository contains the development of MAI Core across its major versions.
 
 ## Hardware
 
-### TFT Display
+### TFT Display--- Mai Ai is on testing...
+its Work with local llm on Ollama 
 
 <p align="center">
-  <img src="docs/images/menu-tft.jpg" alt="MAI Core TFT Menu" width="600">
+  <img src="docs/images/menu-tft.jpg" alt="MAI Core TFT Menu" width="450" height="600">
 </p>
 
 ### Rotary Encoder
 
 <p align="center">
-  <img src="docs/images/Rotary.jpg" alt="MAI Core Rotary Encoder" width="600">
+  <img src="docs/images/Rotary.jpg" alt="MAI Core Rotary Encoder" width="450" height="600">
 </p>
 
 ### SD Storage
 
 <p align="center">
-  <img src="docs/images/SD.jpg" alt="MAI Core SD Storage" width="600">
+  <img src="docs/images/SD.jpg" alt="MAI Core SD Storage" width="450" height="600">
 </p>
 
 ---
