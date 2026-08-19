@@ -239,8 +239,6 @@ git clone https://github.com/nobody-miyabi-suki/MAI-Core.git
 
 9. Power on MAI Core.
 
-> **Important:** Never commit Wi-Fi passwords, API keys, tokens, or other private credentials to the repository.
-
 ---
 
 ## Development
