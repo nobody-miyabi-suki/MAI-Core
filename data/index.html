@@ -1,0 +1,81 @@
+<!-- ==================== index.html ==================== -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MAI Core Neural Interface</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="ambient"></div>
+
+  <header class="header">
+    <div class="brand">
+      <div class="core-icon">⚡</div>
+      <div>
+        <h1>MAI Core</h1>
+        <p>Neural Assistant Interface</p>
+      </div>
+    </div>
+    <div class="status">
+      <span class="dot"></span> ONLINE
+    </div>
+  </header>
+
+  <main class="layout">
+    <!-- ===== CORE VISUAL ===== -->
+    <section class="core-panel">
+      <div class="panel-title">CORE VISUAL</div>
+      <div class="image-frame">
+        <img id="coreImage" src="image6.png" alt="MAI Core" />
+        <div class="image-glow"></div>
+      </div>
+      <div class="core-name">MAI SYSTEM</div>
+    </section>
+
+    <!-- ===== DASHBOARD ===== -->
+    <section class="dashboard">
+      <div class="card">
+        <div class="card-title">📡 NETWORK</div>
+        <div id="network" class="data">Loading...</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🧠 SYSTEM</div>
+        <div id="system" class="data">Loading...</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">🎞 MEDIA CONTROL</div>
+        <div id="mediaList">Loading...</div>
+        <br />
+        <button onclick="pauseGIF()">⏸ Pause</button>
+        <button onclick="resumeGIF()">▶ Resume</button>
+      </div>
+
+      <div class="card control">
+        <div class="card-title">🎛 CONTROL</div>
+        <button onclick="led()">💡 Toggle LED</button>
+        <button onclick="restart()">🔄 Restart Core</button>
+      </div>
+
+      <div class="card files">
+        <div class="card-title">📁 MEMORY FILES</div>
+        <div class="storage">Storage: <span id="storage">Loading...</span></div>
+        <div id="files">Loading...</div>
+        <div class="upload">
+          <input type="file" id="uploadFile" />
+          <div class="upload-buttons">
+            <button onclick="uploadFile()">⬆ Upload</button>
+            <button onclick="updateFiles()">↻ Refresh</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>MAI Core • ESP32 Embedded Intelligence</footer>
+  <script src="script.js"></script>
+</body>
+</html>
