@@ -4,13 +4,25 @@
 #include <Arduino.h>
 #include <ESPAsyncWebServer.h>
 
-
 class MaiAPI
 {
-
 private:
 
     AsyncWebServer server;
+
+    String getContentType(
+        const String& path
+    );
+
+    void handleStaticFile(
+        AsyncWebServerRequest* request
+    );
+
+    void appendFilesRecursive(
+        String& json,
+        bool& first,
+        const char* folder
+    );
 
 
 public:
@@ -20,11 +32,8 @@ public:
     void begin();
 
     void handle();
-
 };
 
-
 extern MaiAPI api;
-
 
 #endif

@@ -2,15 +2,18 @@
 #define DISPLAY_H
 
 #include <Arduino.h>
-
 #include <Adafruit_GFX.h>
 #include <Adafruit_ST7735.h>
+
+#include "config.h"
 
 
 class Display
 {
-
 public:
+
+    Display();
+
 
     void begin();
 
@@ -34,6 +37,15 @@ public:
 
 
     void drawRect(
+        int x,
+        int y,
+        int w,
+        int h,
+        uint16_t color
+    );
+
+
+    void fillRect(
         int x,
         int y,
         int w,
@@ -72,28 +84,16 @@ public:
         int y,
         int w,
         int h,
-        uint16_t *data
-    );
-
-
-    void bootAnimation(
-        String wifi
+        uint16_t* data
     );
 
 
 private:
 
-    Adafruit_ST7735 tft =
-    Adafruit_ST7735(
-        5,
-        2,
-        4
-    );
-
+    Adafruit_ST7735 tft;
 };
 
 
 extern Display display;
-
 
 #endif

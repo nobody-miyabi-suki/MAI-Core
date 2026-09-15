@@ -1,13 +1,56 @@
 #include "display.h"
 
 
-
 Display display;
 
 
+// =====================================================
+// CONSTRUCTOR
+// =====================================================
+
+Display::Display()
+    : tft(
+        TFT_CS,
+        TFT_DC,
+        TFT_RST
+    )
+{
+}
+
+
+// =====================================================
+// BEGIN
+// =====================================================
 
 void Display::begin()
 {
+    Serial.println(
+        "Initializing TFT..."
+    );
+
+
+    pinMode(
+        TFT_CS,
+        OUTPUT
+    );
+
+    digitalWrite(
+        TFT_CS,
+        HIGH
+    );
+
+
+    pinMode(
+        TFT_DC,
+        OUTPUT
+    );
+
+
+    pinMode(
+        TFT_RST,
+        OUTPUT
+    );
+
 
     tft.initR(
         INITR_BLACKTAB
@@ -24,13 +67,18 @@ void Display::begin()
     );
 
 
+    delay(100);
+
+
     Serial.println(
         "Display Ready"
     );
-
 }
 
 
+// =====================================================
+// CLEAR
+// =====================================================
 
 void Display::clear()
 {
@@ -40,6 +88,9 @@ void Display::clear()
 }
 
 
+// =====================================================
+// FILL
+// =====================================================
 
 void Display::fill(
     uint16_t color
@@ -51,6 +102,9 @@ void Display::fill(
 }
 
 
+// =====================================================
+// ROTATION
+// =====================================================
 
 void Display::setRotation(
     uint8_t r
@@ -62,6 +116,9 @@ void Display::setRotation(
 }
 
 
+// =====================================================
+// PIXEL
+// =====================================================
 
 void Display::drawPixel(
     int x,
@@ -77,6 +134,9 @@ void Display::drawPixel(
 }
 
 
+// =====================================================
+// RECT
+// =====================================================
 
 void Display::drawRect(
     int x,
@@ -96,6 +156,31 @@ void Display::drawRect(
 }
 
 
+// =====================================================
+// FILL RECT
+// =====================================================
+
+void Display::fillRect(
+    int x,
+    int y,
+    int w,
+    int h,
+    uint16_t color
+)
+{
+    tft.fillRect(
+        x,
+        y,
+        w,
+        h,
+        color
+    );
+}
+
+
+// =====================================================
+// CIRCLE
+// =====================================================
 
 void Display::drawCircle(
     int x,
@@ -113,6 +198,9 @@ void Display::drawCircle(
 }
 
 
+// =====================================================
+// LINE
+// =====================================================
 
 void Display::drawLine(
     int x1,
@@ -132,6 +220,9 @@ void Display::drawLine(
 }
 
 
+// =====================================================
+// TEXT
+// =====================================================
 
 void Display::drawText(
     String text,
@@ -140,7 +231,6 @@ void Display::drawText(
     int size
 )
 {
-
     tft.setCursor(
         x,
         y
@@ -157,22 +247,32 @@ void Display::drawText(
     );
 
 
+    tft.setTextWrap(
+        false
+    );
+
+
     tft.print(
         text
     );
-
 }
 
 
+// =====================================================
+// PUSH IMAGE
+// =====================================================
 
 void Display::pushImage(
     int x,
     int y,
     int w,
     int h,
-    uint16_t *data
+    uint16_t* data
 )
 {
+    if (!data)
+        return;
+
 
     tft.startWrite();
 
@@ -187,189 +287,10 @@ void Display::pushImage(
 
     tft.writePixels(
         data,
-        w*h,
+        (uint32_t)w * h,
         true
     );
 
 
     tft.endWrite();
-
-}
-
-
-
-
-// ===============================
-// MAI CORE BOOT
-// ===============================
-
-
-void Display::bootAnimation(
-String wifi
-)
-{
-
-    clear();
-
-
-
-    // POWER CORE EFFECT
-
-    for(
-        int r = 5;
-        r <= 35;
-        r += 3
-    )
-    {
-
-        clear();
-
-
-        drawCircle(
-            64,
-            55,
-            r,
-            ST77XX_CYAN
-        );
-
-
-        drawText(
-            "MAI",
-            45,
-            45,
-            2
-        );
-
-
-        delay(80);
-
-    }
-
-
-
-    delay(500);
-
-
-
-    clear();
-
-
-
-    // HUD
-
-
-    drawRect(
-        5,
-        10,
-        118,
-        140,
-        ST77XX_BLUE
-    );
-
-
-    drawText(
-        "MAI CORE V2",
-        18,
-        20,
-        2
-    );
-
-
-    drawText(
-        "BOOT",
-        45,
-        55,
-        2
-    );
-
-
-    delay(700);
-
-
-
-    drawText(
-        "DISPLAY  OK",
-        15,
-        85,
-        1
-    );
-
-
-    delay(300);
-
-
-    drawText(
-        "MEDIA    OK",
-        15,
-        100,
-        1
-    );
-
-
-    delay(300);
-
-
-    drawText(
-        "NETWORK  OK",
-        15,
-        115,
-        1
-    );
-
-
-    delay(1000);
-
-
-
-    clear();
-
-
-
-    drawRect(
-        5,
-        10,
-        118,
-        140,
-        ST77XX_GREEN
-    );
-
-
-    drawText(
-        "WIFI",
-        45,
-        25,
-        2
-    );
-
-
-    drawText(
-        wifi,
-        10,
-        70,
-        1
-    );
-
-
-    drawText(
-        "AP: MAI-Core",
-        10,
-        100,
-        1
-    );
-
-
-    drawText(
-        "READY",
-        42,
-        125,
-        2
-    );
-
-
-    delay(1200);
-
-
-
-    clear();
-
 }

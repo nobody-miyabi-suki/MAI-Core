@@ -3,12 +3,13 @@
 
 #include <Arduino.h>
 #include <FS.h>
-#include <SPIFFS.h>
+#include <SD.h>
 
 class Media
 {
-
 public:
+
+    Media();
 
     void begin();
 
@@ -18,33 +19,52 @@ public:
 
     void update();
 
+    void stop();
+
+    bool isPlaying();
 
 private:
 
-    File gifFile;
+    File mediaFile;
 
+    bool playing;
+    bool isGif;
 
-    bool gifPlaying = false;
+    uint32_t fileSize;
+    uint32_t frameSize;
+    uint32_t frameCount;
+    uint32_t currentFrame;
 
+    unsigned long lastFrameTime;
+    unsigned long frameDelay;
 
-    unsigned long lastFrame = 0;
+    // -------------------------------------------------
+    // IMAGE
+    // -------------------------------------------------
 
+    bool showNormalImage(File &file);
 
-    uint16_t frameDelay = 100; 
-    
+    bool showRotatedImage(File &file);
 
-    uint32_t frameCount = 0;
+    // -------------------------------------------------
+    // GIF
+    // -------------------------------------------------
 
-    uint32_t currentFrame = 0;
+    bool loadNextFrame();
 
+    void drawFrame(File &file);
 
+    // -------------------------------------------------
+    // HELPERS
+    // -------------------------------------------------
 
-    void drawFrame();
+    uint16_t read16(File &file);
 
+    bool validImageSize(uint32_t size);
+
+    void closeFile();
 };
 
-
 extern Media media;
-
 
 #endif

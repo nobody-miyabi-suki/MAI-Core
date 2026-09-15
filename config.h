@@ -30,29 +30,27 @@
 #define SD_MISO 27
 #define SD_MOSI 26
 
-
+  
 // =====================
 // ROTARY ENCODER
 // =====================
 
-#define ROT_CLK 32
-#define ROT_DT  34
-#define ROT_SW  5
+#define ROTARY_CLK  32
+#define ROTARY_DT   34
+#define ROTARY_SW   5
 
 
 // =====================
 // FILE SYSTEM
 // =====================
 
-#define USE_SPIFFS true
-
 
 // =====================
 // WIFI
 // =====================
 
-#define WIFI_SSID     "YOUR_WIFI_SSID"
-#define WIFI_PASSWORD "YOUR_PASS"
+#define WIFI_SSID     "Nobody-M-suki"
+#define WIFI_PASSWORD "m-daisuki"
 
 
 // =====================
