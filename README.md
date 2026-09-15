@@ -296,9 +296,14 @@ https://github.com/nobody-miyabi-suki/MAI-Core
 
 ## License
 
-No open-source license is currently declared for this repository.
+## License
 
-Until a license is added, the source code should be considered copyrighted and is **not automatically available for unrestricted reuse, modification, or redistribution**.
+MAI-Core is licensed under the **MIT License**.
+
+You are free to use, copy, modify, merge, publish, distribute, sublicense, and sell copies of the software, subject to the conditions of the MIT License.
+
+See the [LICENSE](LICENSE) file for the full license text.
+
 
 ---
 
